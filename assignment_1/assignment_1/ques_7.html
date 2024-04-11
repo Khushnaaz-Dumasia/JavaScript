@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Filename Extension</title>
+</head>
+<body>
+  <form id="getExtensionForm">
+    <label for="filenameInput">Enter filename:</label>
+    <input type="text" id="filenameInput" name="filenameInput"><br>
+    <button type="submit">Get Extension</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("getExtensionForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var filename = document.getElementById("filenameInput").value;
+      var extension = getExtension(filename);
+
+      document.getElementById("result").innerText = "Extension: " + extension;
+    });
+
+    function getExtension(filename) {
+      var dotIndex = filename.lastIndexOf(".");
+      if (dotIndex === -1) {
+        return "No extension found";
+      } else {
+        return filename.slice(dotIndex + 1);
+      }
+    }
+  </script>
+</body>
+</html>

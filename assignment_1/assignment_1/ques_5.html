@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function show()
+        {
+            var n =document.getElementById("t1").value;
+            var rev = "";
+            var i=1;
+
+            for( var i=n.length-1; i>=0; i--)
+            {
+                rev = rev+n.charAt(i);
+            }
+            if(n === "")
+            {
+                alert("String input is required");
+            }
+            else if(n === rev)
+            {
+                document.getElementById("t2").value = "This string is a palindrome";
+                //confirm("String is a palindrome!");
+            }
+            else{
+                document.getElementById("t2").value = "This string is not a palindrome";
+                //confirm("String is not a palindrome!");
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <form>
+        <h1>Check if String is Palindrome or Not</h1>
+        <br><br>
+        String Input: <input type="text" id="t1" name="t1" placeholder="Enter a string">
+        <br><br>
+        Checked Output: <input type="text" id="t2" name="t2">
+        <br><br>
+        <input type="button" id="b1" name="b1" value="Check" onclick="show()">
+    </form>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        function f1(){
+            var n = document.getElementById("text1").value;
+            var c=(parseFloat(n-32)*(5/9));
+            var f=parseFloat(n)*(9/5)+32;
+
+            document.getElementById("text2").value=c;
+            document.getElementById("text3").value=f;
+        }
+    </script>
+
+</head>
+<body>
+    <form name="myForm" action="" onsubmit="return validate_form()" method="post">
+        Enter Temperature: <input type="text" name="text1" id="text1" placeholder="Enter temperature in celcius"> 
+        <br>
+        Celcius: <input type="text" id="text2" name="text2">
+        <br>
+        Fehrenheit: <input type="text" id="text3" name="text3">
+        <br>
+        <input type="button" value="Convert" onclick="f1()"> 
+    </form>
+</body>
+</html>

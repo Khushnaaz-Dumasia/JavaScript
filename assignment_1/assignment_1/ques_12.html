@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function age()
+        {
+            var input = document.getElementById("DOB").value;
+            var dob = new Date(input);
+            var cy=2024;
+            if(input == '' || input == null)
+            {
+                alert("Enter a birth date");
+                return false;
+            }
+            else{
+                var age = cy-input;
+                return document.getElementById("Age").value = "Age of the user is "+ age+" years";
+            }
+            
+            // var age= cy-by;
+            // alert("Age of user is ${age}");
+        }
+    </script>
+</head>
+<body>
+    <form action="">
+        <h1>Display Age of User</h1>
+        <br><br>
+        Date of Birth: <input type="text" id="DOB" name="DOB" placeholder="DD-MM-YYYY">
+        <br><br>
+        Age: <input type="text" id="Age" name="Age">
+        <br><br>
+        <input type="button" value="Get Age" onclick="age()">
+    </form>
+</body>
+</html>

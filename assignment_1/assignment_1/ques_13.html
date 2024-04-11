@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var inputArr = [];
+        var size =5;
+        for (var i = 0; i<size; i++)
+        {
+            inputArr[i] = prompt("Enter element " + (i+1));
+        }
+        var largest = inputArr[0];
+        document.write(inputArr);
+
+        for(var i=0; i<size;i++)
+        {
+            if(largest < inputArr[i])
+            {
+                largest = inputArr[i];
+            }
+            else{
+                console.log("Data not found..")
+            }
+        }
+        document.write("The largest element in the given array is: " + largest);
+    </script>
+</body>
+</html>

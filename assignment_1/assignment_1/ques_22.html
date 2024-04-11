@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Count H1 Elements</title>
+</head>
+<body>
+    <h1></h1>
+    <h1></h1>
+    <h1></h1>
+  <form id="countH1Form">
+    <button type="submit">Count H1 Elements</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("countH1Form").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var h1Elements = document.getElementsByTagName("h1");
+      var count = 0;
+
+      for (var i = 0; i < h1Elements.length; i++) {
+        count++;
+      }
+
+      document.getElementById("result").innerText = "Number of H1 elements: " + count;
+    });
+  </script>
+</body>
+</html>

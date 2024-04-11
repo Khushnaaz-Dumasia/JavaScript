@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Form</title>
+  <style>
+    .container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label {
+  display: inline-block;
+  width: 100px;
+}
+
+input {
+  margin-bottom: 10px;
+}
+
+.error {
+  color: red;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Login Form</h2>
+    <form id="login-form">
+      <label for="username">Username:</label>
+      <input type="text" id="username" required><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required><br>
+
+      <input type="checkbox" id="remember-id">
+      <label for="remember-id">Remember my ID</label><br>
+
+      <button type="submit">Login</button>
+    </form>
+    <div id="error-msg" class="error"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+  const loginForm = document.getElementById('login-form');
+  const errorMsg = document.getElementById('error-msg');
+  const rememberIdCheckbox = document.getElementById('remember-id');
+  const usernameInput = document.getElementById('username');
+  const passwordInput = document.getElementById('password');
+
+  // Check if username is remembered
+  if (document.cookie.includes('rememberedUsername')) {
+    const rememberedUsername = document.cookie
+      .split('; ')
+      .find(row => row.startsWith('rememberedUsername'))
+      .split('=')[1];
+    usernameInput.value = rememberedUsername;
+    rememberIdCheckbox.checked = true;
+  }
+
+  // Add event listener for form submission
+  loginForm.addEventListener('submit', function(event) {
+    event.preventDefault();
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+    
+    // Validate username and password
+    if (username === 'admin' && password === 'password') {
+      if (rememberIdCheckbox.checked) {
+        // Set cookie to remember username
+        document.cookie = `rememberedUsername=${username};expires=Thu, 01 Jan 2030 00:00:00 UTC;path=/`;
+      } else {
+        // Remove cookie
+        document.cookie = 'rememberedUsername=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/';
+      }
+      // Redirect to dashboard or perform other actions upon successful login
+      alert('Login successful!');
+      // Redirect to dashboard or perform other actions upon successful login
+    } else {
+      errorMsg.textContent = 'Invalid username or password';
+    }
+  });
+});
+
+  </script>
+</body>
+</html>

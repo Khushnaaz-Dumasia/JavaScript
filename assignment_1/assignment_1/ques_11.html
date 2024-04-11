@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Difference</title>
+</head>
+
+<body>
+    <form id="f1">
+        Start Date:<input type="date" id="startDate" name="startDate"><br>
+        End Date:<input type="date" id="endDate" name="endDate"><br>
+        <button type="submit">Calculate Diff</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("f1").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var startDate = new Date(document.getElementById("startDate").value);
+            var endDate = new Date(document.getElementById("endDate").value);
+
+            var diffInDays = getDiffInDays(startDate, endDate);
+
+            document.getElementById("result").innerText = "Difference: " + diffInDays + " days";
+        });
+
+        function getDiffInDays(startDate, endDate) {
+            var startMs = startDate.getTime();
+            var endMs = endDate.getTime();
+
+            var diffMs = Math.abs(endMs - startMs);
+
+            var diffInDays = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+
+            return diffInDays;
+        }
+    </script>
+</body>
+
+</html>

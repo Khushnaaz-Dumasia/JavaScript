@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Data Form</title>
+  <style>
+    .container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+input, select {
+  margin-bottom: 10px;
+}
+
+button {
+  margin-top: 10px;
+}
+
+#student-data {
+  margin-top: 20px;
+}
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Student Data Form</h1>
+    <form id="student-form">
+      <label for="spid">SPID:</label>
+      <input type="text" id="spid" required pattern="[A-Za-z0-9]{5,10}"><br>
+
+      <label for="roll-number">Roll Number:</label>
+      <input type="text" id="roll-number" required><br>
+
+      <label for="name">Name:</label>
+      <input type="text" id="name" required><br>
+
+      <label for="semester">Semester:</label>
+      <input type="number" id="semester" required min="1" max="8"><br>
+
+      <label for="division">Division:</label>
+      <input type="text" id="division" required><br>
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" required min="18" max="100"><br>
+
+      <label>Gender:</label>
+      <input type="radio" name="gender" id="male" value="male" required>Male
+      <input type="radio" name="gender" id="female" value="female" required>Female<br>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" required><br>
+
+      <label for="mobile">Mobile Number:</label>
+      <input type="tel" id="mobile" required pattern="[0-9]{10}"><br>
+
+      <label for="linkedin">LinkedIn Profile URL:</label>
+      <input type="url" id="linkedin" required><br>
+
+      <label for="username">Username:</label>
+      <input type="text" id="username" required pattern="[A-Za-z0-9_]{5,20}"><br>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W)(?=.*[^\w\d]).{6,}"><br>
+
+      <label for="confirm-password">Re-enter Password:</label>
+      <input type="password" id="confirm-password" required><br>
+
+      <label>Programming Languages Known:</label><br>
+      <input type="checkbox" id="java" value="Java">
+      <label for="java">Java</label>
+      <input type="checkbox" id="python" value="Python">
+      <label for="python">Python</label>
+      <input type="checkbox" id="javascript" value="JavaScript">
+      <label for="javascript">JavaScript</label><br>
+
+      <label for="state">State:</label>
+      <select id="state" required>
+        <option value="">Select State</option>
+        <option value="Maharashtra">Maharashtra</option>
+        <option value="Gujarat">Gujarat</option>
+        <option value="Karnataka">Karnataka</option>
+      </select><br>
+
+      <label for="city">City:</label>
+      <select id="city" required>
+        <option value="">Select City</option>
+      </select><br>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <div id="student-data"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+  const form = document.getElementById('student-form');
+  const studentDataContainer = document.getElementById('student-data');
+  const stateSelect = document.getElementById('state');
+  const citySelect = document.getElementById('city');})
+
+  // Add event listener for form submission
+  form.addEventListener('submit', function(event) {
+    event.preventDefault();
+    if (validateForm()) {
+      addStudentData();
+    }
+  });
+
+  // Populate city dropdown based on selected state
+  stateSelect.addEventListener('change', function() {
+    populateCities();
+  });
+
+  // Validate form inputs
+  function validateForm() {
+    // Add your validation logic here
+    return true; // Placeholder return statement
+  }
+
+  // Add student data to the container
+  function addStudentData() {
+    const studentData = {
+      spid: document.getElementById('spid').value,
+      rollNumber: document.getElementById('roll-number').value,
+      name: document.getElementById('name').value,
+      semester: document.getElementById('semester').value,
+      division: document.getElementById('division').value,
+      age: document.getElementById('age').value,
+      gender: document.querySelector('input[name="gender"]:checked').value,
+      email: document.getElementById('email').value,
+      mobile: document.getElementById('mobile').value,
+      linkedin: document.getElementById('linkedin').value,
+      username: document.getElementById('username').value,
+      password: document.getElementById('password').value,
+      languages: getSelectedLanguages(),
+      state: document.getElementById('state').value,
+      city: document.getElementById('city').value
+    };
+
+    // Add student data to the container
+    const studentDiv = document.createElement('div');
+    studentDiv.innerHTML = `
+      <h2>Student Data</h2>
+      <p>SPID: ${studentData.spid}</p>
+      <p>Roll Number: ${studentData.rollNumber}</p>
+      <p>Name: ${studentData.name}</p>
+      <p>Semester: ${studentData.semester}</p>
+      <p>Division: ${studentData.division}</p>
+      <p>Age: ${studentData.age}</p>
+      <p>Gender: ${studentData.gender}</p>
+      <p>Email: ${studentData.email}</p>
+      <p>Mobile: ${studentData.mobile}</p>
+      <p>LinkedIn: ${studentData.linkedin}</p>
+      <p>Username: ${studentData.username}</p>
+      <p>Password: ${studentData.password}</p>
+      <p>Languages Known: ${studentData.languages.join(', ')}</p>
+      <p>State: ${studentData.state}</p>
+      <p>City: ${studentData.city}</p>
+      <hr>
+    `;
+    studentDataContainer.appendChild(studentDiv);
+  }
+
+  // Get selected programming languages
+  function getSelectedLanguages() {
+    const checkboxes = document.querySelectorAll('input[type]')
+  }
+
+  </script>
+</body>
+</html>

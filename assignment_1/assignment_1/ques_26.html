@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Count Dropdown Items</title>
+</head>
+<body>
+  <form id="countDropdownForm">
+    <select id="dropdown">
+      <option value="option1">Option 1</option>
+      <option value="option2">Option 2</option>
+      <option value="option3">Option 3</option>
+    </select>
+    <button type="submit">Count Items</button>
+  </form>
+
+  <script>
+    document.getElementById("countDropdownForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var dropdown = document.getElementById("dropdown");
+      var itemCount = 0;
+
+      for (var i = 0; i < dropdown.options.length; i++) {
+        itemCount++;
+      }
+
+      alert("Number of items in the dropdown: " + itemCount);
+    });
+  </script>
+</body>
+</html>

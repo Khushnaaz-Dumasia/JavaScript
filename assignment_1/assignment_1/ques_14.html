@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var inputArr = [];
+        var size = 5;
+        for (var i = 0; i < size; i++) {
+            inputArr[i] = prompt("Enter element " + (i + 1));
+        }
+
+        function calSum(arr) {
+            var sum = 0;
+            for (var i = 0; i < arr.length; i++) {
+                sum +=parseInt(inputArr[i]);
+            }
+            return sum;
+        }
+        document.write("Sum of the array is: " + calSum(inputArr));
+
+    </script>
+</body>
+
+</html>

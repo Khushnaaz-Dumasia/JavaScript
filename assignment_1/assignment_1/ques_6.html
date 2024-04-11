@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="">
+        <label for="textInput">Enter a string: </label>
+        <input type="text" id="textInput" name="textInput">
+        <br>
+        Result:<input type="text" id="result">
+        <button type="submit" onsubmit="convertFirstLetter()">See Result</button>
+        
+    </form>
+
+    <script>
+        function convertFirstLetter(){
+           var str =  document.getElementById("textInput").value;
+            var s = "";
+            for (var i=0; i<words.length; i++)
+            {
+                if(i==0)
+                {
+                    s=s+str.charAt(i).toUpperCase;
+                }
+                else if(str.charAt(i)==" " || str.charAt(i)=="." || str.charAt(i)=="?" || str.charAt(i)=="!")
+                {
+                    s=s+str.charAt(i)+str.charAt(i+1).toUpperCase;
+                    i++;
+                    
+                }
+                else{
+                    s=s+str.charAt(i);
+                }
+            }
+        }
+        document.getElementById("result").value=s;
+    </script>
+</body>
+</html>

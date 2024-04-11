@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL Decomposition</title>
+</head>
+<body>
+  <form id="Form1">
+    
+    Enter URL: <input type="text" id="urlInput" name="urlInput"><br>
+    <button type="submit">Show</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("Form1").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var urlInput = document.getElementById("urlInput").value;
+      
+      var protocol = "";
+      var domain = "";
+      var page = "";
+      var extension = "";
+
+      // Parse the URL manually
+      var parts = urlInput.split("/");
+      if (parts.length > 2) {
+        protocol = parts[0].replace(":", "");
+        domain = parts[2];
+        
+        var pageParts = parts[parts.length - 1].split(".");
+        page = pageParts[0];
+        extension = pageParts[1];
+      }
+
+      document.getElementById("result").innerHTML = "Protocol: " + protocol + "<br>"+"Domain: " + domain + "<br>" + "Page: " + page + "<br>" + "Extension: " + extension;
+    });
+  </script>
+</body>
+</html>

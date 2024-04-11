@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Merge Sort</title>
+</head>
+<body>
+  <form id="mergeSortForm">
+    <label for="arrayInput">Array (comma-separated):</label>
+    <input type="text" id="arrayInput" name="arrayInput" placeholder="e.g., 5, 3, 8, 1, 2"><br>
+    <button type="submit">Sort</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("mergeSortForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var arrayInput = document.getElementById("arrayInput").value;
+      var array = arrayInput.split(",").map(Number);
+
+      mergeSort(array);
+
+      document.getElementById("result").innerText = "Sorted Array: " + array.join(", ");
+    });
+
+    function mergeSort(array) {
+      if (array.length <= 1) {
+        return array;
+      }
+
+      var middle = Math.floor(array.length / 2);
+      var left = [];
+      var right = [];
+
+      for (var i = 0; i < middle; i++) {
+        left.push(array[i]);
+      }
+
+      for (var j = middle; j < array.length; j++) {
+        right.push(array[j]);
+      }
+
+      mergeSort(left);
+      mergeSort(right);
+      merge(left, right, array);
+    }
+
+    function merge(left, right, array) {
+      var leftIndex = 0;
+      var rightIndex = 0;
+      var arrayIndex = 0;
+      while (leftIndex < left.length && rightIndex < right.length) {
+        if (left[leftIndex] < right[rightIndex]) {
+          array[arrayIndex] = left[leftIndex];
+          leftIndex++;
+        } else {
+          array[arrayIndex] = right[rightIndex];
+          rightIndex++;
+        }
+        arrayIndex++;
+      }
+
+      while (leftIndex < left.length) {
+        array[arrayIndex] = left[leftIndex];
+        leftIndex++;
+        arrayIndex++;
+      }
+
+      while (rightIndex < right.length) {
+        array[arrayIndex] = right[rightIndex];
+        rightIndex++;
+        arrayIndex++;
+      }
+    }
+  </script>
+</body>
+</html>

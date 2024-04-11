@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hotel Star Rating Calculator</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    form {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+    input[type="text"], input[type="radio"] {
+        margin: 5px 0;
+    }
+    input[type="submit"] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<h2>Hotel Star Rating Calculator</h2>
+
+<form id="hotelForm">
+    <label for="hotelName">Hotel Name:</label>
+    <input type="text" id="hotelName" name="hotelName" required><br>
+
+    <label>Hotel Amenities:</label><br>
+    <input type="radio" id="conferenceRoomYes" name="conferenceRoom" value="Yes" required>
+    <label for="conferenceRoomYes">Conference Room - Yes</label><br>
+    <input type="radio" id="conferenceRoomNo" name="conferenceRoom" value="No">
+    <label for="conferenceRoomNo">Conference Room - No</label><br>
+
+    <input type="radio" id="swimmingPoolYes" name="swimmingPool" value="Yes" required>
+    <label for="swimmingPoolYes">Swimming Pool - Yes</label><br>
+    <input type="radio" id="swimmingPoolNo" name="swimmingPool" value="No">
+    <label for="swimmingPoolNo">Swimming Pool - No</label><br>
+
+    <input type="radio" id="gymYes" name="gym" value="Yes" required>
+    <label for="gymYes">Gym - Yes</label><br>
+    <input type="radio" id="gymNo" name="gym" value="No">
+    <label for="gymNo">Gym - No</label><br>
+
+    <input type="radio" id="wifiYes" name="wifi" value="Yes" required>
+    <label for="wifiYes">Wi Fi Internet - Yes</label><br>
+    <input type="radio" id="wifiNo" name="wifi" value="No">
+    <label for="wifiNo">Wi Fi Internet - No</label><br>
+
+    <input type="radio" id="restaurantYes" name="restaurant" value="Yes" required>
+    <label for="restaurantYes">24 Hours Restaurant - Yes</label><br>
+    <input type="radio" id="restaurantNo" name="restaurant" value="No">
+    <label for="restaurantNo">24 Hours Restaurant - No</label><br>
+
+    <input type="radio" id="creditCardYes" name="creditCard" value="Yes" required>
+    <label for="creditCardYes">Credit Card Payment - Yes</label><br>
+    <input type="radio" id="creditCardNo" name="creditCard" value="No">
+    <label for="creditCardNo">Credit Card Payment - No</label><br>
+
+    <input type="radio" id="receptionYes" name="reception" value="Yes" required>
+    <label for="receptionYes">24 Hours Reception Counter - Yes</label><br>
+    <input type="radio" id="receptionNo" name="reception" value="No">
+    <label for="receptionNo">24 Hours Reception Counter - No</label><br>
+
+    <input type="submit" value="Calculate Star Rating">
+</form>
+
+<script>
+    document.getElementById('hotelForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        // Get values of all amenities
+        var conferenceRoom = document.querySelector('input[name="conferenceRoom"]:checked').value;
+        var swimmingPool = document.querySelector('input[name="swimmingPool"]:checked').value;
+        var gym = document.querySelector('input[name="gym"]:checked').value;
+        var wifi = document.querySelector('input[name="wifi"]:checked').value;
+        var restaurant = document.querySelector('input[name="restaurant"]:checked').value;
+        var creditCard = document.querySelector('input[name="creditCard"]:checked').value;
+        var reception = document.querySelector('input[name="reception"]:checked').value;
+
+        // Count the number of amenities
+        var amenitiesCount = 0;
+        if (conferenceRoom === "Yes") amenitiesCount++;
+        if (swimmingPool === "Yes") amenitiesCount++;
+        if (gym === "Yes") amenitiesCount++;
+        if (wifi === "Yes") amenitiesCount++;
+        if (restaurant === "Yes") amenitiesCount++;
+        if (creditCard === "Yes") amenitiesCount++;
+        if (reception === "Yes") amenitiesCount++;
+
+        // Determine star rating based on amenities count
+        var starRating;
+        if (amenitiesCount <= 3) {
+            starRating = "3 Star Hotel";
+        } else if (amenitiesCount == 4) {
+            starRating = "4 Star Hotel";
+        } else {
+            starRating = "5 Star Hotel";
+        }
+
+        // Display star rating in an alert box
+        alert("Hotel Star Rating: " + starRating);
+    });
+</script>
+
+</body>
+</html>

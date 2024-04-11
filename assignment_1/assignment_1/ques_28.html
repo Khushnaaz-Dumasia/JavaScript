@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Window Size</title>
+</head>
+<body>
+  <p>Window Width: <span id="windowWidth"></span></p>
+  <p>Window Height: <span id="windowHeight"></span></p>
+
+  <script>
+    // Function to update window width and height
+    function updateWindowSize() {
+      document.getElementById("windowWidth").innerText = window.innerWidth;
+      document.getElementById("windowHeight").innerText = window.innerHeight;
+    }
+
+    // Initial update of window size
+    updateWindowSize();
+
+    // Event listener for window resize
+    window.addEventListener("resize", updateWindowSize);
+  </script>
+</body>
+</html>

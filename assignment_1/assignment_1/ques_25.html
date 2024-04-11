@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Display Form Elements</title>
+</head>
+<body>
+  <form id="displayForm">
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput" name="nameInput" value="John"><br>
+    <label for="ageInput">Age:</label>
+    <input type="number" id="ageInput" name="ageInput" value="30"><br>
+    <label for="genderInput">Gender:</label>
+    <input type="radio" id="male" name="genderInput" value="male" checked>
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="genderInput" value="female">
+    <label for="female">Female</label><br>
+    <button type="submit">Display Elements</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("displayForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var formElements = this.elements;
+      var displayInfo = "";
+
+      for (var i = 0; i < formElements.length; i++) {
+        var element = formElements[i];
+
+        // Check if the element is a form control
+        if (element.tagName === "INPUT" || element.tagName === "SELECT" || element.tagName === "TEXTAREA") {
+          var elementValue = element.value;
+          displayInfo += element.name + ": " + elementValue + "<br>";
+        }
+      }
+
+      document.getElementById("result").innerHTML = displayInfo;
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slideshow</title>
+<style>
+    .slideshow-container {
+  position: relative;
+  max-width: 800px;
+  margin: auto;
+}
+
+.slides {
+  display: none;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+}
+
+.image-input {
+  margin-top: 20px;
+}
+
+.image-input input[type="text"] {
+  width: 70%;
+  padding: 10px;
+}
+
+.image-input button {
+  padding: 10px;
+  cursor: pointer;
+}
+
+</style>
+</head>
+<body>
+  <div class="slideshow-container">
+    <div class="slides"></div>
+    <button class="prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="next" onclick="moveSlide(1)">&#10095;</button>
+  </div>
+  <div class="image-input">
+    <input type="text" id="image-url" placeholder="Enter Image URL">
+    <button onclick="addImage()">Add Image</button>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+
+function addImage() {
+  const imageUrl = document.getElementById('image-url').value.trim();
+  if (isValidUrl(imageUrl)) {
+    const slide = document.createElement('div');
+    slide.className = 'slides';
+    slide.style.backgroundImage = `url(${imageUrl})`;
+    document.querySelector('.slideshow-container').appendChild(slide);
+    showSlides(slideIndex += 1);
+    document.getElementById('image-url').value = '';
+  } else {
+    alert('Please enter a valid image URL.');
+  }
+}
+
+function showSlides(n) {
+  const slides = document.getElementsByClassName('slides');
+  if (n > slides.length) {
+    slideIndex = 1;
+  }
+  if (n < 1) {
+    slideIndex = slides.length;
+  }
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = 'none';
+  }
+  slides[slideIndex - 1].style.display = 'block';
+}
+
+function moveSlide(n) {
+  showSlides(slideIndex += n);
+}
+
+function isValidUrl(url) {
+  const pattern = /^(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)$/;
+  return pattern.test(url);
+}
+
+// Display the first slide
+showSlides(slideIndex);
+
+  </script>
+</body>
+</html>

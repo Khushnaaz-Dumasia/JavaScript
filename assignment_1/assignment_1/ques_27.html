@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Populate Combo Box</title>
+</head>
+<body>
+  <form id="populateComboForm">
+    <select id="combo"></select>
+    <button type="submit">Populate Combo Box</button>
+  </form>
+
+  <script>
+    document.getElementById("populateComboForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var combo = document.getElementById("combo");
+      var arrayElements = ["Option 1", "Option 2", "Option 3"];
+
+      for (var i = 0; i < arrayElements.length; i++) {
+        var option = document.createElement("option");
+        option.text = arrayElements[i];
+        combo.add(option);
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Change Color of Paragraph text</h1>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem doloremque ad quam non rem. Nulla ex praesentium aliquid necessitatibus porro saepe neque cumque aut, ratione id quas, voluptate a doloribus?
+    </p>
+
+    <script>
+        var x = document.getElementById("color").value;
+        var text=document.getElementsByTagName("p");
+        function changeColor()
+        {
+            if(x==" ")
+            {
+                alert("Please enter a color");
+            }
+            else{
+                document.getElementsByTagName("p").innerText.style.color = x;
+            }
+            
+        }
+    </script>
+    <form action="">
+        Enter color: <input type="text" id="color">
+        <button type="submit" onclick="changeColor()">See change</button>
+    </form>
+</body>
+</html>

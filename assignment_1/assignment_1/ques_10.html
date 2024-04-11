@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <script>
+        function f1(){
+            var n = document.getElementById("text1").value;
+            if(n%4==0 || n%100==0 && (n%400!=0))
+            {
+                document.getElementById("text2").value = "It is a leap year";
+            }
+            else{
+                document.getElementById("text2").value = "It is not a leap year";
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <form name="myForm" action="" onsubmit="return validate_form()" method="post">
+        Enter a year: <input type="text" name="text1" id="text1" placeholder="Enter year"> 
+        <br>
+        Checked: <input type="text" id="text2" name="text2">
+        <br>
+        <br>
+        <input type="button" value="Check" onclick="f1()"> 
+    </form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Minutes to Date</title>
+</head>
+
+<body>
+    <form id="addMinutesForm">
+        Original Date:<input type="datetime-local" id="originalDate" name="originalDate"><br>
+        <label for="minutesToAdd">Minutes to Add:</label>
+        <input type="number" id="minutesToAdd" name="minutesToAdd" min="1" value="1"><br>
+        <button type="submit">Add Minutes</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        document.getElementById("addMinutesForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+            var originalDate = new Date(document.getElementById("originalDate").value);
+            var minutesToAdd = parseInt(document.getElementById("minutesToAdd").value);
+
+            var newDate = addMinutes(originalDate, minutesToAdd);
+            document.getElementById("result").innerText = "New Date: " + newDate.toLocaleString();
+        });
+
+        function addMinutes(date, minutes) {
+            return new Date(date.getTime() + minutes * 60000);
+        }
+    </script>
+</body>
+
+</html>

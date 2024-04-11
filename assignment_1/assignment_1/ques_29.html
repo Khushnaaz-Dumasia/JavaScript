@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Validation</title>
+<style>
+  .error {
+    color: red;
+  }
+
+  .success {
+    color: green;
+  }
+</style>
+</head>
+<body>
+  <form id="validationForm">
+    <label for="nameInput">Name:</label>
+    <input type="text" id="nameInput" name="nameInput"><br>
+    <label for="ageInput">Age:</label>
+    <input type="number" id="ageInput" name="ageInput"><br>
+    <label for="genderInput">Gender:</label>
+    <input type="radio" id="male" name="genderInput" value="male">
+    <label for="male">Male</label>
+    <input type="radio" id="female" name="genderInput" value="female">
+    <label for="female">Female</label><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="message"></div>
+
+  <script>
+    document.getElementById("validationForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var nameInput = document.getElementById("nameInput").value;
+      var ageInput = document.getElementById("ageInput").value;
+      var genderInputs = document.querySelectorAll('input[name="genderInput"]:checked');
+
+      var messageDiv = document.getElementById("message");
+
+      if (nameInput.trim() === "") {
+        messageDiv.innerText = "Name cannot be blank";
+        messageDiv.className = "error";
+      } else if (ageInput < 15 || ageInput > 20 || isNaN(ageInput)) {
+        messageDiv.innerText = "Age must be between 15 and 20";
+        messageDiv.className = "error";
+      } else if (genderInputs.length === 0) {
+        messageDiv.innerText = "Gender is required";
+        messageDiv.className = "error";
+      } else {
+        messageDiv.innerText = "Form submitted successfully";
+        messageDiv.className = "success";
+      }
+    });
+  </script>
+</body>
+</html>

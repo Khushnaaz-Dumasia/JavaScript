@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function val_form()
+        {
+            var n=document.getElementById("text1").value;
+            //var ans;
+            function factorial(n)
+            {
+                if(n == 0 || n == 1)
+                {
+                    return 1;
+                }
+                else{
+                    return n*factorial(n-1);
+                }
+            }
+            document.getElementById("text2").value=factorial(n);
+        }
+    </script>
+</head>
+<body>
+    
+    <form action="" method="post">
+        <h1 style="color:darkblue">Find Factorial of a Number</h1>
+        Enter number: <input type="text" id="text1" name="text1">
+        <br><br>
+        Factorial is: <input type="text" id="text2" name="text2">
+        <br><br>
+        <input type="button" value="Count Factorial" onclick="val_form()">
+    </form>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Join Array Elements</title>
+</head>
+<body>
+  <form id="joinArrayForm">
+    <label for="arrayInput">Array (comma-separated):</label>
+    <input type="text" id="arrayInput" name="arrayInput" placeholder="e.g., str1, str2, str3"><br>
+    <label for="delimiter">Delimiter:</label>
+    <input type="text" id="delimiter" name="delimiter" placeholder="e.g., ,"><br>
+    <button type="submit">Join</button>
+  </form>
+
+  <div id="result"></div>
+
+  <script>
+    document.getElementById("joinArrayForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      var arrayInput = document.getElementById("arrayInput").value.split(",");
+      var delimiter = document.getElementById("delimiter").value;
+      
+      var result = "";
+      for (var i = 0; i < arrayInput.length; i++) {
+        result += arrayInput[i].trim();
+        if (i !== arrayInput.length - 1) {
+          result += delimiter;
+        }
+      }
+
+      document.getElementById("result").innerText = "Joined String: " + result;
+    });
+  </script>
+</body>
+</html>
